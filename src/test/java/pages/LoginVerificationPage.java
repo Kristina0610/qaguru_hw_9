@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class LoginPage {
+public class LoginVerificationPage {
   // SelenideElements / locator / etc
 
   SelenideElement customerLoginButton = $("[ng-click='customer()']"),
@@ -15,19 +15,19 @@ public class LoginPage {
 
   // Actions
 
-  public LoginPage openPage() {
+  public LoginVerificationPage openPage() {
     open("/angularJs-protractor/BankingProject/#/login");
 
     return this;
   }
 
-  public LoginPage choiceCustomerLogin() {
+  public LoginVerificationPage choiceCustomerLogin() {
     customerLoginButton.click();
 
     return this;
   }
 
-  public LoginPage setCustomerLogin(String key) {
+  public LoginVerificationPage setCustomerLogin(String key) {
     selection.click();
     String id = String.format("[value='%s", key) + "']";
     $(id).click();
@@ -35,13 +35,13 @@ public class LoginPage {
     return this;
   }
 
-  public LoginPage clickSubmit() {
+  public LoginVerificationPage clickSubmit() {
     button.click();
 
     return this;
   }
 
-  public LoginPage verifyResult(String value) {
+  public LoginVerificationPage verifyResult(String value) {
     $(".borderM").shouldHave(text("Welcome " + value + " !!"));
 
     return this;
